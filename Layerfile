@@ -4,7 +4,8 @@ FROM vm/ubuntu:18.04
 # Install node 10
 RUN curl -sL https://deb.nodesource.com/setup_10.x | bash
 RUN apt install nodejs
-COPY . .
-RUN npm install
-RUN npm run dev
-EXPOSE WEBSITE http://localhost:8080
+RUN npm install -g http-server
+WORKDIR app
+RUN echo 'hello' > hello.html
+RUN BACKGROUND http-server -p 8000
+EXPOSE WEBSITE http://localhost:8000
