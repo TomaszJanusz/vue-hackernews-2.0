@@ -4,9 +4,8 @@ FROM vm/ubuntu:18.04
 # Install node 10
 RUN curl -sL https://deb.nodesource.com/setup_10.x | bash
 RUN apt install nodejs
-RUN npm install -g http-server
-RUN npm install
 COPY . .
 WORKDIR vue-hackernews-2.0
+RUN npm install
 RUN npm run dev
 EXPOSE WEBSITE http://localhost:8080
